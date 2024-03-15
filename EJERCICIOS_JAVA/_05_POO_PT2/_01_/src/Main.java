@@ -48,7 +48,7 @@ public class Main {
                     String marca = JOptionPane.showInputDialog("Ingrese marca: ");
 
                     ProductoEspecifico objProducto = new ProductoEspecifico(id,nombre,precio,categoria,marca);
-                    objInventario.agregarProductos(objProducto);
+                    objInventario.agregarProducto(objProducto);
                     objInventario.listarProductos();
 
                     break;
