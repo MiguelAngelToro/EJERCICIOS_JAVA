@@ -41,4 +41,10 @@ public class Especialidad {
         this.descripcion = descripcion;
     }
 
+    @Override
+    public String toString() {
+        return "idEspecialidad=" + idEspecialidad +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'';
+    }
 }
