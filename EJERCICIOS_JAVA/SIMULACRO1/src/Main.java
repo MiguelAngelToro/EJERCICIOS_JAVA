@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         String option = "";
         String option1 = "";
-        String option3 = "";
+
 
         do {
             option = JOptionPane.showInputDialog("""
@@ -24,14 +24,19 @@ public class Main {
                     do {
                         option1 = JOptionPane.showInputDialog("""
                             MENÚ ESPECIALIDADES
-                            1.Crear
-                            2.Actualizar
-                            3.Listar
-                            4.Eliminar
-                            5.Salir
+                            
+                            1. Crear
+                            2. Actualizar
+                            3. Listar
+                            4. Eliminar
+                            5. Salir
                             """);
 
                         switch (option1){
+                            case "1":
+                                EspecialidadController.create();
+                                break;
+
                             case "3":
                                 EspecialidadController.findAll();
 
@@ -47,7 +52,7 @@ public class Main {
                 case "3":
 
                     do {
-                        option3 = JOptionPane.showInputDialog("""
+                        option1 = JOptionPane.showInputDialog("""
                                 MENÚ PACIENTES
                                 
                                 1. Crear
@@ -57,12 +62,15 @@ public class Main {
                                 5. Salir
                                 """);
 
-                        switch (option3){
+                        switch (option1){
+                            case "1":
+                                PacienteController.create();
+                                break;
                             case "3":
                                 PacienteController.findAll();
                                 break;
                         }
-                    }while (option3.equals("5"));
+                    }while (option1.equals("5"));
                     break;
             }
 

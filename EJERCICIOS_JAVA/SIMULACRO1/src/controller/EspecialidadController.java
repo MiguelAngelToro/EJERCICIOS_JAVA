@@ -22,4 +22,21 @@ public class EspecialidadController {
 
         JOptionPane.showMessageDialog(null,listaEspecialidades);
     }
+
+    public static void create(){
+        EspecialidadModel objEspecialidadModel = new EspecialidadModel();
+
+        String nombre = JOptionPane.showInputDialog("Ingrese nombre de especialidad");
+        String descripcion = JOptionPane.showInputDialog("Ingrese descripcion");
+
+        Especialidad objEspecialidad = new Especialidad();
+
+        objEspecialidad.setNombre(nombre);
+        objEspecialidad.setDescripcion(descripcion);
+
+        objEspecialidad = (Especialidad) objEspecialidadModel.insert(objEspecialidad);
+
+        JOptionPane.showMessageDialog(null,objEspecialidad.toString());
+
+    }
 }

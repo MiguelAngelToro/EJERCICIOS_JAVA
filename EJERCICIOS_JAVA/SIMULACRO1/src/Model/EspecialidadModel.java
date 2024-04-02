@@ -15,7 +15,50 @@ import java.util.List;
 public class EspecialidadModel implements CRUD {
     @Override
     public Object insert(Object obj) {
-        return null;
+
+
+        //Abrir conexión
+        Connection objConnection = ConfigDb.openConnection();
+
+        //Convertir Objeto que se recibe a tipo Especialidad
+        Especialidad objEspecialidad = (Especialidad) obj;
+
+        try{
+
+            String sql = "insert into especialidad (nombre,descripcion) values (?,?);";
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS); //retorna los id generados por la base de datos
+
+            //Asignar los values
+            objPrepare.setString(1,objEspecialidad.getNombre());
+            objPrepare.setString(2,objEspecialidad.getDescripcion());
+
+
+            //Ejecutamos el codigo en la base pero no se nos regresa nada, de esta manera por el id autogenerado
+            objPrepare.execute();
+
+            //Obtenemos todas las lleves generadas incluyendo id autogenerado
+            ResultSet objResult = objPrepare.getGeneratedKeys();
+
+            while (objResult.next()){
+
+                objEspecialidad.setIdEspecialidad(objResult.getInt(1));
+
+            }
+
+            JOptionPane.showMessageDialog(null,"Especialidad inscrita exitosamente");
+
+
+
+        }catch (SQLException e){
+
+            JOptionPane.showMessageDialog(null,e.getMessage());
+
+        }
+
+        ConfigDb.closeConnection();
+
+
+        return objEspecialidad;
     }
 
     @Override
