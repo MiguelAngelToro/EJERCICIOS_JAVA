@@ -9,7 +9,7 @@ public class Paciente {
 
     private String apellidos;
 
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
 
     private String documentoIdentidad;
 
@@ -17,12 +17,21 @@ public class Paciente {
 
     }
 
-    public Paciente(int idPaciente, String nombre, String apellidos, Date fechaNacimiento, String documentoIdentidad) {
+    public Paciente(int idPaciente, String nombre, String apellidos, String fechaNacimiento, String documentoIdentidad) {
         this.idPaciente = idPaciente;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
         this.documentoIdentidad = documentoIdentidad;
+    }
+
+    @Override
+    public String toString() {
+        return "idPaciente=" + idPaciente +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", documentoIdentidad='" + documentoIdentidad + '\'';
     }
 
     public int getIdPaciente() {
@@ -49,11 +58,11 @@ public class Paciente {
         this.apellidos = apellidos;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
