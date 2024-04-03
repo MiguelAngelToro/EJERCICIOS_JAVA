@@ -1,5 +1,7 @@
 import controller.EspecialidadController;
+import controller.MedicoController;
 import controller.PacienteController;
+import entity.Medico;
 
 import javax.swing.*;
 
@@ -41,6 +43,10 @@ public class Main {
                                 EspecialidadController.create();
                                 break;
 
+                            case "2":
+                                EspecialidadController.update();
+                                break;
+
                             case "3":
                                 EspecialidadController.findAll();
 
@@ -49,11 +55,44 @@ public class Main {
                                 EspecialidadController.delete();
                                 break;
                         }
-                    }while (option1.equals("5"));
+                    }while (!option1.equals("5"));
 
                     break;
 
                 case "2":
+
+                    do {
+                        option1 = JOptionPane.showInputDialog("""
+                            MENÚ MEDICOS
+                            
+                            1. Crear
+                            2. Actualizar
+                            3. Listar
+                            4. Eliminar
+                            5. Salir
+                            
+                            Ingrese opción:
+                            """);
+
+                        switch (option1){
+                            case "1":
+                                MedicoController.insert();
+                                break;
+
+                            case "2":
+                                MedicoController.update();
+                                break;
+
+                            case "3":
+                                MedicoController.getAll();
+                                break;
+
+                            case "4":
+                                MedicoController.deleted();
+                                break;
+                        }
+                    }while (!option1.equals("5"));
+
                     break;
 
                 case "3":
@@ -81,7 +120,7 @@ public class Main {
                     break;
             }
 
-        }while (option.equals("6"));
+        }while (!option.equals("6"));
 
     }
 }

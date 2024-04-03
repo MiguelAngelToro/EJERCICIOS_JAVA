@@ -1,24 +1,27 @@
 package entity;
 
-public class Medico {
+public class  Medico {
 
     private int idMedico;
     private String nombre;
     private String apellidos;
 
     private int fkIdEspecialidad;
-    private Especialidad especialidad;
+
+    private Especialidad objEspecialidad;
+
 
 
     public Medico (){
 
     }
-    public Medico(int idMedico, String nombre, String apellidos, int fkIdEspecialidad, Especialidad especialidad) {
-        this.idMedico = idMedico;
+    public Medico(String nombre, String apellidos, int fkIdEspecialidad,Especialidad objEspecialidad) {
+
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fkIdEspecialidad = fkIdEspecialidad;
-        this.especialidad = especialidad;
+        this.objEspecialidad = objEspecialidad;
+
     }
 
     public int getIdMedico() {
@@ -53,11 +56,22 @@ public class Medico {
         this.fkIdEspecialidad = fkIdEspecialidad;
     }
 
-    public Especialidad getEspecialidad() {
-        return especialidad;
+    public Especialidad getObjEspecialidad() {
+        return objEspecialidad;
     }
 
-    public void setEspecialidad(Especialidad especialidad) {
-        this.especialidad = especialidad;
+    public void setObjEspecialidad(Especialidad objEspecialidad) {
+        this.objEspecialidad = objEspecialidad;
+    }
+
+    @Override
+    public String toString() {
+        return "nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                "especialidad=" + this.objEspecialidad.getNombre();
     }
 }
+
+
+
+

@@ -48,4 +48,17 @@ public class EspecialidadController {
         instanceModel().delete(objSedlected);
 
     }
+
+    public static void update(){
+
+        Object[] options = Utils.listToArray(instanceModel().findAll());
+        Especialidad objSedlected = (Especialidad) JOptionPane.showInputDialog(null,
+                "Selecciona una especialidad",
+                "",JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+
+        objSedlected.setNombre(JOptionPane.showInputDialog(null,"Ingrese el nuevo nombre", objSedlected.getNombre()));
+        objSedlected.setDescripcion(JOptionPane.showInputDialog(null,"Ingrese la nueva descripción", objSedlected.getDescripcion()));
+
+        instanceModel().update(objSedlected);
+    }
 }

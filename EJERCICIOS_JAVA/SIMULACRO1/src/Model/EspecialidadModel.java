@@ -103,7 +103,35 @@ public class EspecialidadModel implements CRUD {
 
     @Override
     public boolean update(Object obj) {
-        return false;
+
+        Connection objConnection = ConfigDb.openConnection();
+        Especialidad objEspecialidad = (Especialidad) obj;
+
+        boolean isUpdated = false;
+
+        try{
+            String sql = "update especialidad set nombre = ?, descripcion = ? where id_especialidad = ?;";
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+            objPrepare.setString(1,objEspecialidad.getNombre());
+            objPrepare.setString(2,objEspecialidad.getDescripcion());
+            objPrepare.setInt(3,objEspecialidad.getIdEspecialidad());
+
+            int totalAffected = objPrepare.executeUpdate();
+
+            if (totalAffected > 0){
+                isUpdated = true;
+                JOptionPane.showMessageDialog(null,"La especialidad fue actualizada");
+            }
+
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+
+        }
+
+        ConfigDb.closeConnection();
+
+        return isUpdated;
     }
 
     @Override
