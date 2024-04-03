@@ -12,10 +12,14 @@ public class Main {
         do {
             option = JOptionPane.showInputDialog("""
                     MENÚ PRINCIPAL
-                    1. Especialidades
-                    2.
-                    3. Pacientes
+                    
+                    1. Administrar Especialidades
+                    2. Administrar Medicos
+                    3. Administrar Pacientes
+                    4. Administrar Citas
                     6. Salir
+                    
+                    Ingese una opcion:
                     """);
 
             switch (option){

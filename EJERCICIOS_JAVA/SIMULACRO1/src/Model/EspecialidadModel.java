@@ -47,12 +47,9 @@ public class EspecialidadModel implements CRUD {
 
             JOptionPane.showMessageDialog(null,"Especialidad inscrita exitosamente");
 
-
-
         }catch (SQLException e){
 
             JOptionPane.showMessageDialog(null,e.getMessage());
-
         }
 
         ConfigDb.closeConnection();

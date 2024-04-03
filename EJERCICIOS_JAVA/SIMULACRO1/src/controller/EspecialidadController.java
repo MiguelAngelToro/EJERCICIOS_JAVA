@@ -24,19 +24,15 @@ public class EspecialidadController {
     }
 
     public static void create(){
-        EspecialidadModel objEspecialidadModel = new EspecialidadModel();
 
         String nombre = JOptionPane.showInputDialog("Ingrese nombre de especialidad");
         String descripcion = JOptionPane.showInputDialog("Ingrese descripcion");
 
-        Especialidad objEspecialidad = new Especialidad();
+        instanceModel().insert(new Especialidad(nombre,descripcion));
 
-        objEspecialidad.setNombre(nombre);
-        objEspecialidad.setDescripcion(descripcion);
+    }
 
-        objEspecialidad = (Especialidad) objEspecialidadModel.insert(objEspecialidad);
-
-        JOptionPane.showMessageDialog(null,objEspecialidad.toString());
-
+    public static EspecialidadModel instanceModel(){
+        return new EspecialidadModel();
     }
 }
