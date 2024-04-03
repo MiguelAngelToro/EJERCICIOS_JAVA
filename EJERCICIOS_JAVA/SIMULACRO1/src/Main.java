@@ -45,6 +45,9 @@ public class Main {
                                 EspecialidadController.findAll();
 
                                 break;
+                            case "4":
+                                EspecialidadController.delete();
+                                break;
                         }
                     }while (option1.equals("5"));
 

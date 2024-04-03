@@ -108,6 +108,32 @@ public class EspecialidadModel implements CRUD {
 
     @Override
     public boolean delete(Object obj) {
-        return false;
+        Connection objConnection = ConfigDb.openConnection();
+        Especialidad objEspecialidad = (Especialidad) obj;
+
+        boolean isDeleted = false;
+
+        try{
+            String sql = "delete from especialidad where id_especialidad = ?;";
+
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+            objPrepare.setInt(1,objEspecialidad.getIdEspecialidad());
+
+            int totalaffected = objPrepare.executeUpdate();
+
+            if (totalaffected > 0){
+                isDeleted = true;
+
+                JOptionPane.showMessageDialog(null,"registro eliminado correctamente");
+            }
+
+
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+        ConfigDb.closeConnection();
+
+        return isDeleted;
     }
 }

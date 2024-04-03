@@ -2,6 +2,7 @@ package controller;
 
 import Model.EspecialidadModel;
 import entity.Especialidad;
+import utils.Utils;
 
 import javax.swing.*;
 
@@ -34,5 +35,17 @@ public class EspecialidadController {
 
     public static EspecialidadModel instanceModel(){
         return new EspecialidadModel();
+    }
+
+    public static void delete(){
+
+        Object[] options = Utils.listToArray(instanceModel().findAll());
+
+        Especialidad objSedlected = (Especialidad) JOptionPane.showInputDialog(null,
+                "Selecciona una especialidad",
+                "",JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+
+        instanceModel().delete(objSedlected);
+
     }
 }
