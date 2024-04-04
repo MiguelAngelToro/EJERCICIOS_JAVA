@@ -49,6 +49,8 @@ public class MedicoController {
         String nombre = JOptionPane.showInputDialog(null,"Ingrese el nombre del médico: ",objMedico.getNombre());
         String apellidos = JOptionPane.showInputDialog(null,"Ingrese apellidos: ",objMedico.getApellidos());
 
+
+
         Object[] optionsEspecialidades = Utils.listToArray(EspecialidadController.instanceModel().findAll());
 
         Especialidad objEspecialidad = (Especialidad) JOptionPane.showInputDialog(null,
@@ -60,7 +62,13 @@ public class MedicoController {
                 optionsEspecialidades[0]
         );
 
-        instanceModel().update(new Medico(nombre,apellidos, objEspecialidad.getIdEspecialidad(),objEspecialidad));
+        objMedico.setNombre(nombre);
+        objMedico.setApellidos(apellidos);
+        objMedico.setFkIdEspecialidad(objEspecialidad.getIdEspecialidad());
+        objMedico.setObjEspecialidad(objEspecialidad);
+
+        instanceModel().update(objMedico);
+
 
 
 

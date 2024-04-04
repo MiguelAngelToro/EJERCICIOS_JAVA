@@ -93,7 +93,7 @@ public class MedicoModel implements CRUD {
 
         Connection objConnection = ConfigDb.openConnection();
 
-        Medico objMedico = new Medico();
+        Medico objMedico = (Medico) obj;
 
         boolean isupdated = false;
 
