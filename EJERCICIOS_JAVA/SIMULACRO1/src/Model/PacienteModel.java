@@ -2,6 +2,7 @@ package Model;
 
 import database.CRUD;
 import database.ConfigDb;
+import entity.Especialidad;
 import entity.Paciente;
 
 import javax.swing.*;
@@ -87,11 +88,65 @@ public class PacienteModel implements CRUD {
 
     @Override
     public boolean update(Object obj) {
-        return false;
+        Connection objConnection = ConfigDb.openConnection();
+        Paciente objPaciente = (Paciente) obj;
+
+        boolean isUpdated = false;
+
+        try{
+            String sql = "update paciente set nombre = ?, apellidos = ?, fecha_nacimiento = ?, documento_identidad = ? where id_paciente = ?;";
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+            objPrepare.setString(1,objPaciente.getNombre());
+            objPrepare.setString(2,objPaciente.getApellidos());
+            objPrepare.setString(3,objPaciente.getFechaNacimiento());
+            objPrepare.setString(4,objPaciente.getDocumentoIdentidad());
+            objPrepare.setInt(5,objPaciente.getIdPaciente());
+
+            int totalAffected = objPrepare.executeUpdate();
+
+            if (totalAffected > 0){
+                isUpdated = true;
+                JOptionPane.showMessageDialog(null,"El paciente fue actualizado");
+            }
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+
+        ConfigDb.closeConnection();
+        return isUpdated;
     }
 
     @Override
     public boolean delete(Object obj) {
-        return false;
+
+        Connection objConnection = ConfigDb.openConnection();
+        Paciente objPaciente = (Paciente) obj;
+
+        boolean isDeleted = false;
+
+        try{
+            String sql = "delete from paciente where id_paciente = ?;";
+
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+            objPrepare.setInt(1,objPaciente.getIdPaciente());
+
+            int totalaffected = objPrepare.executeUpdate();
+
+            if (totalaffected > 0){
+                isDeleted = true;
+
+                JOptionPane.showMessageDialog(null,"registro eliminado correctamente");
+            }
+
+
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+        ConfigDb.closeConnection();
+
+
+        return isDeleted;
     }
 }

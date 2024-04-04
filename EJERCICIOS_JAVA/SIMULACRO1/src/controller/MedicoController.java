@@ -44,6 +44,7 @@ public class MedicoController {
                 "Selecciona el médico a actualizar",
                 "",JOptionPane.QUESTION_MESSAGE,null,options,options[0]
         );
+        
 
         String nombre = JOptionPane.showInputDialog(null,"Ingrese el nombre del médico: ",objMedico.getNombre());
         String apellidos = JOptionPane.showInputDialog(null,"Ingrese apellidos: ",objMedico.getApellidos());

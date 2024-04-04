@@ -4,6 +4,7 @@ import Model.EspecialidadModel;
 import Model.PacienteModel;
 import entity.Especialidad;
 import entity.Paciente;
+import utils.Utils;
 
 import javax.swing.*;
 
@@ -42,5 +43,36 @@ public class PacienteController {
 
         JOptionPane.showMessageDialog(null,objPaciente.toString());
 
+    }
+
+    public static void update(){
+        Object[] options = Utils.listToArray(instanceModel().findAll());
+
+        Paciente objSelected = (Paciente) JOptionPane.showInputDialog(null,
+                "Selecciona un paciente",
+                "",JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+
+        objSelected.setNombre(JOptionPane.showInputDialog(null,"Ingrese el nuevo nombre"));
+        objSelected.setApellidos(JOptionPane.showInputDialog(null,"Ingrese apellidos"));
+        objSelected.setFechaNacimiento(JOptionPane.showInputDialog(null,"Ingrese fecha de nacimiento AÑO-MES-DIA"));
+        objSelected.setDocumentoIdentidad(JOptionPane.showInputDialog(null,"Ingrese docuemnto de identidad"));
+
+        instanceModel().update(objSelected);
+    }
+
+    public static void delete(){
+
+        Object[] options = Utils.listToArray(instanceModel().findAll());
+
+        Paciente objSedlected = (Paciente) JOptionPane.showInputDialog(null,
+                "Seleccione un paciente",
+                "",JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+
+        instanceModel().delete(objSedlected);
+
+    }
+
+    public static PacienteModel instanceModel(){
+        return new PacienteModel();
     }
 }

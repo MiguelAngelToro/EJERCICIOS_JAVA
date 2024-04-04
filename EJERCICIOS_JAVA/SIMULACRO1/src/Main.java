@@ -112,11 +112,17 @@ public class Main {
                             case "1":
                                 PacienteController.create();
                                 break;
+                            case "2":
+                                PacienteController.update();
+                                break;
                             case "3":
                                 PacienteController.findAll();
                                 break;
+                            case "4":
+                                PacienteController.delete();
+                                break;
                         }
-                    }while (option1.equals("5"));
+                    }while (!option1.equals("5"));
                     break;
             }
 
