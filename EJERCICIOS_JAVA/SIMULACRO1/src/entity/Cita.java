@@ -5,33 +5,28 @@ import java.util.Date;
 public class Cita {
 
     private int idCita;
+    private String fechaCita;
+    private String horaCita;
+    private String motivo;
     private int fkIdPaciente;
-
-    private Paciente paciente;
-
     private int fkIdMedico;
 
+    private Paciente paciente;
     private Medico medico;
 
-    private String fechaCita;
-
-    private String horaCita;
-
-    private String motivo;
 
     public Cita (){
 
     }
 
-    public Cita(int idCita, int fkIdPaciente, Paciente paciente, int fkIdMedico, Medico medico, String fechaCita, String horaCita, String motivo) {
-        this.idCita = idCita;
-        this.fkIdPaciente = fkIdPaciente;
-        this.paciente = paciente;
-        this.fkIdMedico = fkIdMedico;
-        this.medico = medico;
+    public Cita(String fechaCita, String horaCita, String motivo, int fkIdPaciente, int fkIdMedico, Paciente paciente, Medico medico) {
         this.fechaCita = fechaCita;
         this.horaCita = horaCita;
         this.motivo = motivo;
+        this.fkIdPaciente = fkIdPaciente;
+        this.fkIdMedico = fkIdMedico;
+        this.paciente = paciente;
+        this.medico = medico;
     }
 
     public int getIdCita() {
@@ -96,5 +91,16 @@ public class Cita {
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
+    }
+
+    @Override
+    public String toString() {
+        return "Cita{" +
+                "fechaCita='" + fechaCita + '\'' +
+                ", horaCita='" + horaCita + '\'' +
+                ", motivo='" + motivo + '\'' +
+                ", paciente=" + paciente.getNombre() +
+                ", medico=" + medico.getNombre() +
+                '}';
     }
 }

@@ -1,3 +1,4 @@
+import controller.CitaController;
 import controller.EspecialidadController;
 import controller.MedicoController;
 import controller.PacienteController;
@@ -122,6 +123,38 @@ public class Main {
                                 PacienteController.delete();
                                 break;
                         }
+                    }while (!option1.equals("5"));
+                    break;
+
+                case "4":
+                    do {
+                        option1 = JOptionPane.showInputDialog("""
+                                MENÚ CITAS
+                                
+                                1. Crear
+                                2. Actualizar
+                                3. Listar
+                                4. Eliminar
+                                5. Salir
+                                
+                                """);
+
+                        switch (option1){
+                            case "1":
+                                CitaController.insert();
+                                break;
+                            case "2":
+                                CitaController.update();
+                                break;
+                            case "3":
+                                CitaController.getAll();
+                                break;
+                            case "4":
+                                CitaController.delete();
+                                break;
+
+                        }
+
                     }while (!option1.equals("5"));
                     break;
             }
