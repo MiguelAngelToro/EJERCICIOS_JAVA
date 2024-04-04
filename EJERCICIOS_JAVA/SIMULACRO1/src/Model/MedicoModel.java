@@ -18,7 +18,7 @@ public class MedicoModel implements CRUD {
     public Object insert(Object obj) {
         Connection objConnection = ConfigDb.openConnection();
 
-        Medico objMedico = (Medico) obj;
+        Medico objMedico = new Medico();
 
         try{
             String sql = "insert into medico (nombre,apellidos,fk_id_especialidad) values (?,?,?);";
